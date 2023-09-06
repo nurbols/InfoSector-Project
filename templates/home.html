@@ -1,0 +1,47 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+{% block content %}
+<body>
+  <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Nurbol Satibaldiev</h1>
+          <p class="lead text-muted">Hello, I am a software engineer. And I am a big fan of the tech industry. On this website, I posted about technologies announced recently. </p>
+          <p>
+            <a href="mailto:satibaldievn25@gmail.com" class="btn btn-primary my-2">Email me </a>
+            
+          </p>
+          <img src="{% static 'main.jpg' %}" height = 300></img> 
+        </div>
+      </section>
+
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+
+          <div class="row">
+          {% for job in object_list %}
+
+
+            <div class="col-md-4">
+              
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src = "{{ job.image.url }}" height=250>
+                <div class="card-body">
+                {{ job.summary | slice:":100" }}... <a href ="{% url 'job_detail' job.id %}" class="card-text">Details</a>
+                </div>  
+              </div>
+            </div>
+          {% endfor %} 
+
+{% endblock content %}
+
+
+
+
+          
+
+  
